@@ -1,14 +1,15 @@
-plugins:
-  - jekyll-relative-links
-relative_links:
-  enabled: true
-  collections: true
-include:
-  - CONTRIBUTING.md
+# GitHub Pages (Jekyll) configuration.
+# This is a hand-authored static site — Jekyll simply serves the HTML, CSS,
+# JS, fonts, and images as-is. No themes, layouts, or Liquid are required.
+
+title: Aditya G
+description: >-
+  SEBI-Registered Investment Adviser and Certified Financial Planner in
+  Chennai, India — investing, trading, and bespoke fiduciary advisory.
+url: https://adityagovindaraj.github.io
+lang: en
+
+# Keep non-web files out of the published site.
+exclude:
   - README.md
-  - LICENSE.md
-  - COPYING.md
-  - CODE_OF_CONDUCT.md
-  - CONTRIBUTING.md
-  - ISSUE_TEMPLATE.md
-  - PULL_REQUEST_TEMPLATE.md
+  - .gitignore
