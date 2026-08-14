@@ -5,45 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found — Aditya G</title>
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141310" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbf7e8" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/architects-daughter.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/css/main.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <header class="site-header">
-      <div class="wrap nav">
-        <a class="brand" href="/" aria-label="Aditya G — home">aditya g<span class="brand__dot" aria-hidden="true">.</span></a>
-        <nav aria-label="Primary">
-          <ul class="nav-list" id="primary-nav">
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#experience">Experience</a></li>
-            <li><a href="/#contact">Contact</a></li>
-          </ul>
-        </nav>
+
+    <header class="topbar">
+      <div class="wrap">
+        <a class="brand" href="/">aditya g<span aria-hidden="true">.</span></a>
       </div>
     </header>
+
     <main id="main">
-      <div class="wrap">
-        <section class="section section--flush hero" aria-labelledby="nf-title">
-          <p class="eyebrow">Error 404</p>
-          <h1 class="hero__title" id="nf-title" style="font-size: var(--step-4)">
-            Page not found
-          </h1>
-          <p class="hero__desc">
-            The page you were looking for doesn't exist or may have moved.
-          </p>
-          <p class="hero__actions">
-            <a class="btn" href="/">
-              Back to home
-              <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            </a>
-          </p>
-        </section>
+      <div class="wrap page-hero">
+        <p class="eyebrow">Error 404</p>
+        <h1>Page not found</h1>
+        <p>The page you were looking for doesn't exist or may have moved.</p>
+        <p style="margin-top: var(--rule-h)">
+          <a class="btn" href="/">Back to home</a>
+        </p>
       </div>
     </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <nav class="foot-nav" aria-label="Site">
+          <a href="/advisory/fiduciary.html">Advisory</a>
+          <a href="/photography.html">Photography</a>
+          <a href="/books.html">Bookshelf</a>
+          <a href="/media.html">Films &amp; TV</a>
+          <a href="/now.html">Now</a>
+          <a href="/resume.html">Résumé</a>
+        </nav>
+        <p class="footer__meta">© <span id="year">2026</span> Aditya G · Chennai.</p>
+      </div>
+    </footer>
+
     <script src="/assets/js/main.js" defer></script>
   </body>
 </html>
