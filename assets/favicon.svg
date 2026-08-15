@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Aditya G monogram">
-  <rect width="64" height="64" rx="14" fill="#9a3b1b" />
-  <text x="50%" y="50%" dy="0.02em" text-anchor="middle" dominant-baseline="central"
-    font-family="Georgia, 'Times New Roman', serif" font-size="42" font-style="italic"
-    font-weight="600" fill="#fbfaf7">a</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Aditya G">
+  <title>Aditya G</title>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="#fbf7e8" stroke="#cfc7b0" stroke-width="1"/>
+  <clipPath id="pg"><rect x="1" y="1" width="62" height="62" rx="13"/></clipPath>
+  <g clip-path="url(#pg)">
+    <line x1="0" y1="12.5" x2="64" y2="12.5" stroke="#9db4c8" stroke-width="1.1"/>
+    <line x1="0" y1="46" x2="64" y2="46" stroke="#9db4c8" stroke-width="1.1"/>
+    <line x1="15" y1="0" x2="15" y2="64" stroke="#d98c8c" stroke-width="1.2"/>
+  </g>
+  <path d="M420 166Q345 48 220 20Q191 14 167.5 14.0Q144 14 128.5 14.5Q113 15 94.0 19.0Q75 23 59 32Q22 53 22 91Q18 109 18.0 131.5Q18 154 28.0 191.0Q38 228 64.5 271.0Q91 314 129 350Q208 426 300 448Q327 454 349.5 454.0Q372 454 390 451Q448 451 468 372Q481 322 483.5 232.5Q486 143 488.5 94.5Q491 46 501 6H442Q438 33 436.0 54.0Q434 75 432 93Q427 135 420 166ZM416 321Q416 379 359 379Q352 380 345 380Q272 380 191 310Q153 278 126 238Q86 181 86 136Q86 77 154 66Q244 68 326 148Q361 183 384 224Q416 279 416 321Z" transform="translate(21.698 46.000) scale(0.0686 -0.0686)" fill="#2a2f45"/>
 </svg>
