@@ -48,7 +48,7 @@
     Helvetica, Arial, sans-serif;
 
   /* Notebook ruling — text sits on a 32px baseline grid */
-  --rule-h: 32px;
+  --rule-h: 2rem; /* scales with the fluid root font-size */
   --rule-baseline: 23px; /* y of the rule within each cell = text baseline */
   --rule-color: #9db4c8;
   --margin-color: #d98c8c;
@@ -98,6 +98,8 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
+  /* Fluid base size: the whole rem-based design scales up on large screens. */
+  font-size: clamp(16px, 9px + 0.6vw, 22px);
 }
 body {
   /* Warm paper with a faint dot grid — a hint of notebook structure, but
@@ -110,7 +112,7 @@ body {
   background-position: 12px 12px, 0 0;
   color: var(--ink);
   font-family: var(--font-hand);
-  font-size: 20px; /* fixed so the baseline grid stays exact at all widths */
+  font-size: 1.25rem; /* scales with the fluid root font-size */
   line-height: var(--rule-h);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -257,9 +259,10 @@ a:hover {
 /* Montblanc pen — decorative accent, angled below the photo */
 .pen-deco {
   position: absolute;
-  top: 27rem;
-  left: 61%;
-  height: clamp(260px, 34vw, 400px);
+  /* always a fixed gap below the photo, whatever size it scales to */
+  top: calc(var(--photo-w, 24rem) + 17rem);
+  left: 60%;
+  height: var(--photo-w, 24rem);
   width: auto;
   transform: rotate(22deg);
   transform-origin: center;
@@ -267,7 +270,7 @@ a:hover {
   z-index: 0;
   filter: drop-shadow(0 14px 20px rgba(40, 30, 20, 0.22));
 }
-@media (max-width: 64rem) {
+@media (max-width: 71.99rem) {
   .pen-deco {
     display: none;
   }
@@ -276,8 +279,10 @@ a:hover {
 /* Handwritten margin note pointing to the pen's nib */
 .pen-note {
   position: absolute;
-  top: 37.5rem;
-  left: 46%;
+  top: calc(var(--photo-w, 24rem) + 27rem);
+  /* anchored a fixed distance left of the pen (which sits at 60%), so the note
+     and arrow stay locked to the pen at every viewport width */
+  left: calc(60% - 14rem);
   width: 11rem;
   z-index: 1;
   pointer-events: none;
@@ -298,7 +303,7 @@ a:hover {
   height: auto;
   margin: 0.15rem 0 0 5.5rem;
 }
-@media (max-width: 64rem) {
+@media (max-width: 71.99rem) {
   .pen-note {
     display: none;
   }
@@ -317,22 +322,33 @@ a:hover {
   .home__main {
     grid-column: 1;
   }
-  /* .home .pinned out-specifies the base .pinned rule (which is defined
-     later in the file) so the absolute placement actually wins. */
+  /* Medium screens: the photo stays in flow within the prose column, so it
+     can never overlap the text. */
   .home .pinned {
-    /* anchored in the central whitespace: centre sits ~59% across,
-       so it lands in the same spot on any window width */
-    position: absolute;
-    top: 7rem;
-    left: 59%;
-    margin: 0;
-    transform: translateX(-50%) rotate(var(--tilt));
+    margin: var(--space-m) 0 var(--rule-h);
   }
   .home__side {
     grid-column: 3;
     justify-self: end;
     text-align: right;
     padding-top: var(--nav-align, 0px);
+  }
+}
+
+/* Large screens: the photo floats free in the central whitespace and scales
+   up with the viewport; there is now enough room that it clears the text. */
+@media (min-width: 72rem) {
+  .home {
+    /* one knob drives the photo size AND where the pen + note sit below it */
+    --photo-w: clamp(19rem, 21vw, 25rem);
+  }
+  .home .pinned {
+    position: absolute;
+    top: 7rem;
+    left: 59%;
+    width: var(--photo-w);
+    margin: 0;
+    transform: translateX(-50%) rotate(var(--tilt));
   }
 }
 .home__name {
