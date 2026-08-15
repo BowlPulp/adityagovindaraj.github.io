@@ -261,11 +261,63 @@ a:hover {
    ========================================================================= */
 .home {
   /* Top padding is a whole number of rule cells so text lands on the grid */
-  padding-top: calc(var(--rule-h) * 3);
+  padding-top: var(--rule-h);
   padding-bottom: var(--space-2xl);
   padding-left: clamp(2.9rem, 3vw, 3.5rem);
   padding-right: clamp(1.5rem, 4vw, 3rem);
+  position: relative; /* anchor for the pinned photo */
 }
+
+/* Montblanc pen — decorative accent, angled below the photo */
+.pen-deco {
+  position: absolute;
+  top: 27rem;
+  left: 61%;
+  height: clamp(260px, 34vw, 400px);
+  width: auto;
+  transform: rotate(22deg);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 14px 20px rgba(40, 30, 20, 0.22));
+}
+@media (max-width: 64rem) {
+  .pen-deco {
+    display: none;
+  }
+}
+
+/* Handwritten margin note pointing to the pen's nib */
+.pen-note {
+  position: absolute;
+  top: 37.5rem;
+  left: 46%;
+  width: 11rem;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--ink);
+}
+.pen-note__text {
+  font-family: var(--font-script);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--link); /* ballpoint blue, like the links on the left */
+  transform: rotate(-4deg);
+  transform-origin: left top;
+}
+.pen-note__arrow {
+  display: block;
+  width: 70px;
+  height: auto;
+  margin: 0.15rem 0 0 5.5rem;
+}
+@media (max-width: 64rem) {
+  .pen-note {
+    display: none;
+  }
+}
+
 .home__grid {
   display: grid;
   gap: var(--space-l);
@@ -279,11 +331,16 @@ a:hover {
   .home__main {
     grid-column: 1;
   }
-  .pinned {
-    grid-column: 2;
-    justify-self: center; /* centred in the middle column */
-    align-self: start;
-    margin: 1rem 0 0;
+  /* .home .pinned out-specifies the base .pinned rule (which is defined
+     later in the file) so the absolute placement actually wins. */
+  .home .pinned {
+    /* anchored in the central whitespace: centre sits ~59% across,
+       so it lands in the same spot on any window width */
+    position: absolute;
+    top: 7rem;
+    left: 59%;
+    margin: 0;
+    transform: translateX(-50%) rotate(var(--tilt));
   }
   .home__side {
     grid-column: 3;
@@ -379,6 +436,32 @@ a:hover {
 }
 .linklist li {
   line-height: var(--rule-h); /* one item per ruled line */
+}
+/* Steam · GitHub · Email as a single row of icons; inline elements follow
+   the list's text-align (right on desktop, left on mobile). */
+.linklist .social {
+  margin-top: 0.4rem;
+  white-space: nowrap;
+}
+.linklist .social a {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.85rem;
+  color: var(--ink-secondary);
+  border-bottom: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.linklist .social a:first-child {
+  margin-left: 0;
+}
+.linklist .social a:hover,
+.linklist .social a:focus-visible {
+  color: var(--link);
+  border-bottom: 0;
+  transform: translateY(-1px);
+}
+.linklist .social svg {
+  display: block;
 }
 .linklist a {
   color: var(--ink-secondary);
@@ -542,6 +625,11 @@ a:hover {
   font-size: var(--step-1);
   color: var(--ink);
 }
+/* On the plain document pages (advisory), keep these values in the same
+   readable sans as the rest of the page rather than the handwriting face. */
+[data-plain] .about__facts dd {
+  font-family: var(--font-sans);
+}
 
 /* Data tables (advisory compliance) */
 .table-scroll {
@@ -582,8 +670,8 @@ tbody tr:last-child td {
 
 /* Photography gallery (masonry via CSS columns, no JS) */
 .gallery {
-  columns: 3 17rem;
-  column-gap: var(--space-s);
+  columns: 2 24rem;
+  column-gap: var(--space-m);
 }
 @media (max-width: 34rem) {
   .gallery {
