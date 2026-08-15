@@ -423,6 +423,15 @@ a:hover {
   display: block;
 }
 
+/* Mobile: a smaller pinned photo tucked just below the name, so the portrait
+   and the intro copy are both visible without scrolling past the text. */
+@media (max-width: 47.99rem) {
+  .home .pinned {
+    width: clamp(160px, 46vw, 200px);
+    margin: var(--space-xs) 0 var(--rule-h);
+  }
+}
+
 /* Right-side navigation — tiny, marginal, one link per ruled line */
 .home__side {
   font-family: var(--font-sans);
@@ -833,6 +842,32 @@ tbody tr:last-child td {
 [data-plain] .site-footer,
 [data-plain] .doc li {
   line-height: 1.5;
+}
+
+/* =========================================================================
+   Interior-page site nav — mirrors the home side nav, pinned to the top-right
+   corner on wide screens; stacks under the brand on mobile.
+   ========================================================================= */
+.corner-nav {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: var(--rule-h);
+  text-align: right;
+  padding: var(--space-2xs) clamp(1.5rem, 4vw, 3rem) var(--space-2xs)
+    clamp(2.9rem, 3vw, 3.5rem);
+}
+@media (min-width: 48rem) {
+  .corner-nav {
+    position: absolute;
+    top: var(--rule-h);
+    right: clamp(1.5rem, 4vw, 3rem);
+    padding: 0;
+    z-index: 20;
+  }
+  /* reserve the right column so page content never runs under the nav */
+  main > .wrap {
+    padding-right: 11rem;
+  }
 }
 
 /* ---------- Reduced motion ---------------------------------------------- */
