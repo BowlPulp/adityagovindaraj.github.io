@@ -1141,4 +1141,12 @@ tbody tr:last-child td {
     width: auto;
     transform: none !important;
   }
+
+  /* Home page: the nav is nested inside .home which already provides
+     left/right padding — zero out the nav's own to avoid double indentation
+     that would make the 3-column grid too narrow for "Films & TV". */
+  .home .corner-nav {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
