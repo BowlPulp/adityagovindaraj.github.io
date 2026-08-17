@@ -17,6 +17,13 @@
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/assets/fonts/caveat-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <style>
+      /* Pull the hero up closer to the "aditya." brand */
+      .page-hero--tight {
+        margin-top: calc(var(--rule-h) * -1.0);
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -40,8 +47,7 @@
 
     <main id="main">
       <div class="wrap">
-        <div class="page-hero">
-          <p class="eyebrow">Now</p>
+        <div class="page-hero page-hero--tight">
           <h1>What I'm doing now</h1>
           <p>
             A snapshot of what has my attention at the moment — inspired by
