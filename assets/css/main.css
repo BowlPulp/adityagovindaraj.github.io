@@ -857,6 +857,9 @@ tbody tr:last-child td {
   text-align: right;
   padding: var(--space-2xs) clamp(1.5rem, 4vw, 3rem) var(--space-2xs)
     clamp(2.9rem, 3vw, 3.5rem);
+  /* On mobile the nav is in normal flow — give it breathing room so the
+     last sticky-note card never bleeds into the page heading below. */
+  margin-bottom: calc(var(--rule-h) * 1.5);
 }
 @media (min-width: 48rem) {
   .corner-nav {
@@ -865,6 +868,7 @@ tbody tr:last-child td {
     right: clamp(1.5rem, 4vw, 3rem);
     padding: 0;
     z-index: 20;
+    margin-bottom: 0; /* reset — absolutely positioned, not in flow */
   }
   /* reserve the right column so page content never runs under the nav */
   main > .wrap {
