@@ -975,3 +975,125 @@ tbody tr:last-child td {
     text-decoration: underline;
   }
 }
+
+
+
+
+
+/* =========================================
+   Handwritten paper-note navigation
+   ========================================= */
+
+.corner-nav .linklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.corner-nav .linklist li {
+  position: relative;
+  width: fit-content;
+}
+
+/* Slightly different angle for every note */
+.corner-nav .linklist li:nth-child(1) {
+  transform: rotate(-2deg);
+}
+
+.corner-nav .linklist li:nth-child(2) {
+  transform: rotate(1.5deg) translateX(5px);
+}
+
+.corner-nav .linklist li:nth-child(3) {
+  transform: rotate(-1deg) translateX(-3px);
+}
+
+.corner-nav .linklist li:nth-child(4) {
+  transform: rotate(2deg) translateX(4px);
+}
+
+.corner-nav .linklist li:nth-child(5) {
+  transform: rotate(-1.5deg);
+}
+
+.corner-nav .linklist li:nth-child(6) {
+  transform: rotate(1deg) translateX(5px);
+}
+
+.corner-nav .linklist a {
+  position: relative;
+  display: inline-block;
+
+  padding: 2px 8px 4px;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Little piece of "paper" behind the writing */
+.corner-nav .linklist a::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  inset: -2px -7px -3px;
+
+  background: rgba(255, 253, 242, 0.7);
+
+  border: 1px solid rgba(80, 70, 55, 0.12);
+
+  box-shadow:
+    1px 2px 0 rgba(80, 70, 55, 0.08);
+
+  transform: rotate(-1deg);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Tiny folded/torn-looking corner */
+.corner-nav .linklist a::after {
+  content: "";
+
+  position: absolute;
+
+  right: -6px;
+  bottom: -3px;
+
+  width: 9px;
+  height: 9px;
+
+  background: rgba(245, 240, 220, 0.8);
+
+  border-left: 1px solid rgba(80, 70, 55, 0.1);
+  border-top: 1px solid rgba(80, 70, 55, 0.1);
+
+  transform: rotate(35deg);
+}
+
+/* Hover: note shifts slightly */
+.corner-nav .linklist a:hover {
+  transform: translateX(5px) rotate(-1deg);
+}
+
+.corner-nav .linklist a:hover::before {
+  transform: rotate(1deg) translateY(-1px);
+
+  box-shadow:
+    2px 3px 0 rgba(80, 70, 55, 0.1);
+}
+
+/* Current page looks like it was circled */
+.corner-nav .linklist a[aria-current="page"]::before {
+  border: 1px solid rgba(60, 55, 45, 0.22);
+
+  box-shadow:
+    2px 2px 0 rgba(60, 55, 45, 0.08);
+
+  transform: rotate(-2deg);
+}
