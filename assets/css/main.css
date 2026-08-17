@@ -876,6 +876,29 @@ tbody tr:last-child td {
   }
 }
 
+/* =========================================================================
+   Mobile nav — sits at the bottom, 3 items per row
+   ========================================================================= */
+@media (max-width: 47.99rem) {
+  /* Reorder the three top-level blocks so the nav appears below main */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .topbar     { order: 1; }
+  main        { order: 2; flex: 1; }
+  .corner-nav {
+    order: 3;
+    margin-bottom: 0;     /* override the flow-spacing rule above */
+    margin-top: 0;
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-l);
+    border-top: 1px solid var(--line);
+    text-align: left;
+  }
+
+}
+
 /* ---------- Reduced motion ---------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -1101,4 +1124,21 @@ tbody tr:last-child td {
     2px 2px 0 rgba(60, 55, 45, 0.08);
 
   transform: rotate(-2deg);
+}
+/* =========================================================================
+   Mobile nav linklist — 3-column grid (must come after the base flex rule)
+   ========================================================================= */
+@media (max-width: 47.99rem) {
+  .corner-nav .linklist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-s) var(--space-xs);
+  }
+
+  /* Keep items left-aligned within their cell; tame the per-item transforms
+     so they don't overflow into neighbouring cells at this small size */
+  .corner-nav .linklist li {
+    width: auto;
+    transform: none !important;
+  }
 }
