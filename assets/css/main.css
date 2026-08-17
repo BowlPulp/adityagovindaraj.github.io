@@ -22,8 +22,10 @@
 }
 @font-face {
   font-family: "Caveat";
-  src: url("/assets/fonts/caveat-600.woff2") format("woff2");
-  font-weight: 600;
+  src: url("/assets/fonts/caveat-var.woff2") format("woff2");
+  /* Full-Latin variable Caveat (weights 400–700) so all text — body, headings,
+     the signature — renders in the cursive face. */
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
@@ -39,9 +41,9 @@
 :root {
   color-scheme: light;
 
-  /* Handwriting is the primary voice; sans is the readable fallback used on
-     dense pages (advisory / résumé). Caveat kept for the cursive signature. */
-  --font-hand: "Architects Daughter", "Bradley Hand", "Comic Sans MS", cursive;
+  /* Cursive script is the primary voice, to match the theme of writing; sans is
+     the readable fallback used on dense pages (advisory / résumé). */
+  --font-hand: "Caveat", "Architects Daughter", "Segoe Script", "Bradley Hand", cursive;
   --font-script: "Caveat", "Segoe Script", cursive;
   --font-display: var(--font-hand);
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -877,6 +879,78 @@ tbody tr:last-child td {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================================
+   Cover grids (books / films / TV) — covers load live in the browser from
+   public databases; the title always shows first as a graceful fallback.
+   ========================================================================= */
+.cover-grid {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--rule-h);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: var(--space-m) var(--space-s);
+}
+.cover {
+  margin: 0;
+}
+.cover__frame {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 18px -10px rgba(40, 30, 20, 0.5),
+    0 1px 2px rgba(40, 30, 20, 0.12);
+}
+.cover__fallback {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--ink-secondary);
+  overflow: hidden;
+}
+.cover__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--surface);
+  animation: cover-fade 0.4s ease;
+}
+@keyframes cover-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.cover figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.cover figcaption .cover__sub {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+@media (max-width: 34rem) {
+  .cover-grid {
+    grid-template-columns: repeat(auto-fill, minmax(6.75rem, 1fr));
   }
 }
 
